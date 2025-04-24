@@ -195,7 +195,7 @@ function AlbumSection({ onAlbumFound }) {
               <li>Set the time and click Submit to scrobble</li>
             </ol>
             <p className="mt-6 text-sm">
-              Note: You need to be logged in to <a href="https://www.last.fm" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300">Last.fm</a> to submit scrobbles
+              Note: You need to link your <a href="https://www.last.fm" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300">Last.fm</a> account to submit scrobbles
             </p>
           </div>
         )}
