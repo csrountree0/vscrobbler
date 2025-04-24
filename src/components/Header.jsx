@@ -17,9 +17,8 @@ function Header() {
           let r = await getSK();
           if(r) {
             setIsLoggedIn(true);
-            // Remove token from URL without refreshing the page
-            const newUrl = window.location.pathname;
-            window.history.replaceState({}, '', newUrl);
+            const basePath = '/vscrobbler/';
+            window.history.replaceState({}, '', basePath);
           }
         }
         isProcessing.current = false;
