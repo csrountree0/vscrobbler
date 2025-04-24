@@ -6,7 +6,7 @@ export async function fmlogin() {
         localStorage.removeItem('token');
         return false;
     } else {
-        window.open(urlbase + "fmlogin");
+        window.location.href = urlbase + "fmlogin";
         return true;
     }
 }
