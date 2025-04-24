@@ -1,0 +1,76 @@
+import { useState, useEffect, useRef } from 'react';
+import { fmlogin, getSK } from '../api/lastfmApi';
+
+function Header() {
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('sk') !== null);
+  const isProcessing = useRef(false);
+
+  useEffect(() => {
+    const checkLogin = async () => {
+      // Only process token on callback URL
+      console.log(window.location.pathname)
+      if (window.location.pathname === '/Callback' && !isProcessing.current) {
+        isProcessing.current = true;
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get('token');
+        if (token && !localStorage.getItem('sk')) {
+          localStorage.setItem('token', token);
+          let r = await getSK();
+          if(r) {
+            setIsLoggedIn(true);
+          }
+        }
+        isProcessing.current = false;
+      }
+    };
+
+    checkLogin();
+  }, []);
+
+  const handleLogin = async () => {
+    await fmlogin();
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('sk');
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+  };
+
+  return (
+    <header className="bg-[#0a0a0a] py-4 px-8 relative">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="flex gap-6 text-gray-400">
+          <a href="https://www.discogs.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-red-400 transition-colors">
+            <div className="bg-white rounded-full">
+              <img src="https://logosandtypes.com/wp-content/uploads/2024/07/discogs.svg" alt="Discogs" className="h-6 w-auto" />
+            </div>
+            Discogs
+          </a>
+          <a href="https://www.last.fm" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-red-400 transition-colors">
+            <img src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/last_fm-512.png" alt="Last.fm" className="h-6 w-auto" />
+            Last.fm
+          </a>
+        </div>
+        <h1 className="text-2xl font-bold text-white absolute left-1/2 -translate-x-1/2">vScrobbler</h1>
+        {isLoggedIn ? (
+          <button 
+            onClick={handleLogout}
+            className=" px-4 py-2 bg-red-600 text-white rounded hover:bg-red-500"
+          >
+            Unlink
+          </button>
+        ) : (
+          <button 
+            onClick={handleLogin}
+            className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-500 cursor-pointer"
+          >
+            Link Last.fm
+          </button>
+        )}
+      </div>
+    </header>
+  );
+}
+
+export default Header; 
