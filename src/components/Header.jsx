@@ -12,13 +12,13 @@ function Header() {
         const urlParams = new URLSearchParams(window.location.search);
         const token = urlParams.get('token');
         
+        const basePath = '/vscrobbler/';
+        window.history.replaceState({}, '', basePath);
         if (token && !localStorage.getItem('sk')) {
           localStorage.setItem('token', token);
           let r = await getSK();
           if(r) {
             setIsLoggedIn(true);
-            const basePath = '/vscrobbler/';
-            window.history.replaceState({}, '', basePath);
           }
         }
         isProcessing.current = false;
