@@ -1,7 +1,6 @@
 const urlbase = 'https://vscrobblerapihandler.colbyr416-927.workers.dev/'
 
 export async function fmlogin() {
-
     if (localStorage.getItem('sk')) {
         localStorage.removeItem('sk');
         localStorage.removeItem('token');

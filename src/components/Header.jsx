@@ -7,9 +7,8 @@ function Header() {
 
   useEffect(() => {
     const checkLogin = async () => {
-      // Only process token on callback URL
-      console.log(window.location.pathname)
-      if (window.location.pathname === '/Callback' && !isProcessing.current) {
+
+      if (!isProcessing.current) {
         isProcessing.current = true;
         const urlParams = new URLSearchParams(window.location.search);
         const token = urlParams.get('token');

@@ -191,7 +191,7 @@ function AlbumSection({ onAlbumFound }) {
               <li>Find your album on <a href="https://www.discogs.com" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300">Discogs.com</a></li>
               <li>Copy the release ID or URL (e.g., 16150880, [r14409008])</li>
               <li>Paste the ID or URL in the search box above</li>
-              <li>Click Search to find your album</li>
+              <li>Press Enter or click the magnifying glass to find your album</li>
               <li>Set the time and click Submit to scrobble</li>
             </ol>
             <p className="mt-6 text-sm">
