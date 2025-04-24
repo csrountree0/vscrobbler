@@ -7,9 +7,16 @@ import SubmitSection from './components/SubmitSection';
 
 function App() {
   const [searchParams, setSearchParams] = useState(null);
+  const [submitMessage, setSubmitMessage] = useState({ text: '', color: '' });
 
   const handleAlbumFound = (params) => {
     setSearchParams(params);
+    setSubmitMessage({ text: '', color: '' }); // Clear message on new search
+  };
+
+  const handleClear = () => {
+    setSearchParams(null);
+    setSubmitMessage({ text: '', color: '' }); // Clear message when album is cleared
   };
 
   return (
@@ -17,8 +24,8 @@ function App() {
       <Header />
       
       <main className="flex-1 w-full max-w-7xl mx-auto my-4 sm:my-8 px-4 sm:px-8 space-y-4 sm:space-y-8">
-        <AlbumSection onAlbumFound={handleAlbumFound} />
-        <SubmitSection searchParams={searchParams} />
+        <AlbumSection onAlbumFound={handleAlbumFound} onClear={handleClear} />
+        <SubmitSection searchParams={searchParams} submitMessage={submitMessage} setSubmitMessage={setSubmitMessage} />
       </main>
     </div>
   );

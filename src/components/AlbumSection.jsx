@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { searchDiscogs } from '../api/discogsApi';
 
-function AlbumSection({ onAlbumFound }) {
+function AlbumSection({ onAlbumFound, onClear }) {
   const [albumInfo, setAlbumInfo] = useState({ title: '', artist: '', image: '', params: null });
   const [searchText, setSearchText] = useState('');
   const [error, setError] = useState('');
@@ -72,7 +72,7 @@ function AlbumSection({ onAlbumFound }) {
     setError('');
     setHasTimestamps(true);
     setShowDurationForm(false);
-    onAlbumFound(null);
+    onClear();
   };
 
   const handleKeyPress = (e) => {

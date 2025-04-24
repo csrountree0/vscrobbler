@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import { submit_scrobble } from '../api/lastfmApi';
 
-function SubmitSection({ searchParams }) {
+function SubmitSection({ searchParams, submitMessage, setSubmitMessage }) {
   const [currentTime, setCurrentTime] = useState('');
   const [isTimeManual, setIsTimeManual] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState({ text: '', color: '' });
 
   useEffect(() => {
     // Check login status
@@ -44,8 +43,8 @@ function SubmitSection({ searchParams }) {
   };
 
   const handleSubmit = async () => {
-    if (!localStorage.getItem('sk')) {
-      alert('Please link your Last.fm account first');
+    if (!isLoggedIn) {
+      alert('Please log in to Last.fm first');
       return;
     }
 
@@ -56,7 +55,6 @@ function SubmitSection({ searchParams }) {
 
     const params = { ...searchParams };
     params.sk = localStorage.getItem('sk');
-    console.log(currentTime);
     const success = await submit_scrobble(params, currentTime);
     if (success) {
       setSubmitMessage({ text: 'Album Scrobbled!', color: 'text-green-400' });
