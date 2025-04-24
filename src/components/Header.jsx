@@ -7,16 +7,19 @@ function Header() {
 
   useEffect(() => {
     const checkLogin = async () => {
-
       if (!isProcessing.current) {
         isProcessing.current = true;
         const urlParams = new URLSearchParams(window.location.search);
         const token = urlParams.get('token');
+        
         if (token && !localStorage.getItem('sk')) {
           localStorage.setItem('token', token);
           let r = await getSK();
           if(r) {
             setIsLoggedIn(true);
+            // Remove token from URL without refreshing the page
+            const newUrl = window.location.pathname;
+            window.history.replaceState({}, '', newUrl);
           }
         }
         isProcessing.current = false;
