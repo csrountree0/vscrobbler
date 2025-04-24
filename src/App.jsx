@@ -13,10 +13,10 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#1a1a1a] text-white flex flex-col">
+    <div className="min-h-screen w-full bg-[#1a1a1a] text-white flex flex-col">
       <Header />
       
-      <main className="flex-1 max-w-7xl mx-auto my-8 px-8 space-y-8">
+      <main className="flex-1 w-full max-w-7xl mx-auto my-4 sm:my-8 px-4 sm:px-8 space-y-4 sm:space-y-8">
         <AlbumSection onAlbumFound={handleAlbumFound} />
         <SubmitSection searchParams={searchParams} />
       </main>
