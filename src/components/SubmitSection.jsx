@@ -44,8 +44,8 @@ function SubmitSection({ searchParams }) {
   };
 
   const handleSubmit = async () => {
-    if (!isLoggedIn) {
-      alert('Please log in to Last.fm first');
+    if (!localStorage.getItem('sk')) {
+      alert('Please link your Last.fm account first');
       return;
     }
 
