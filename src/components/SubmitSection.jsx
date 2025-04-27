@@ -43,11 +43,7 @@ function SubmitSection({ searchParams, submitMessage, setSubmitMessage }) {
   };
 
   const handleSubmit = async () => {
-    if (localStorage.getItem('sk')) {
-      setIsLoggedIn(true);
-    }
-
-    if (!isLoggedIn) {
+    if (!localStorage.getItem('sk')) {
       alert('Please log in to Last.fm first');
       return;
     }
