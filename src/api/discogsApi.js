@@ -20,7 +20,6 @@ async function searchDiscogs(query) {
             }
         }
     } else {
-        // Remove [r12345678] format and any whitespace
         query = query.replace(/\[r?(\d+)\]|\s+/g, '$1');
     }
 
