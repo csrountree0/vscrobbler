@@ -4,14 +4,8 @@ import { submit_scrobble } from '../api/lastfmApi';
 function SubmitSection({ searchParams, submitMessage, setSubmitMessage }) {
   const [currentTime, setCurrentTime] = useState('');
   const [isTimeManual, setIsTimeManual] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    // Check login status
-    if (localStorage.getItem('sk')) {
-      setIsLoggedIn(true);
-    }
-  }, []);
+
 
   // Function to update time
   const updateTime = () => {
