@@ -1,6 +1,13 @@
 const apiurl = "https://api.discogs.com/releases/";
 
+/*
+    This function takes in a query parameter and extracts the
+    discogs ID from the string using regex to then make a call
+    to the discogs api and pull all the data pertaining to the
+    provided ID for the album the user wishes to scrobble.
+*/
 async function searchDiscogs(query) {
+    // create a structure to hold data about a given album
     let params = {
         album: [],
         artist: [],
@@ -23,6 +30,7 @@ async function searchDiscogs(query) {
         query = query.replace(/\[r?(\d+)\]|\s+/g, '$1');
     }
 
+    // Make a call to the discogs api and extract and place data in the structure
     try {
         const response = await fetch(apiurl + query);
         const json = await response.json();
