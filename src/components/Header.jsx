@@ -53,18 +53,18 @@ function Header() {
             <span className="hidden sm:inline">Last.fm</span>
           </a>
         </div>
-        <h1 className="text-xl sm:text-2xl font-bold text-white absolute left-1/2 -translate-x-1/2">vScrobbler</h1>
+        <h1 className="cursor-default text-xl sm:text-2xl font-bold text-white absolute left-1/2 -translate-x-1/2">vScrobbler</h1>
         {isLoggedIn ? (
           <button 
             onClick={handleLogout}
-            className="px-3 sm:px-4 py-1.5 sm:py-2 bg-red-600 text-white rounded hover:bg-red-500 text-sm sm:text-base"
+            className="px-3 sm:px-4 py-1.5 sm:py-2 outline-1 outline-red-600 bg-[#3a3a3a] text-white rounded hover:bg-[#3a3a3a] text-sm sm:text-base cursor-pointer"
           >
             Unlink
           </button>
         ) : (
           <button 
             onClick={handleLogin}
-            className="px-3 sm:px-4 py-1.5 sm:py-2 bg-red-600 text-white rounded hover:bg-red-500 cursor-pointer text-sm sm:text-base"
+            className="px-3 sm:px-4 py-1.5 sm:py-2 bg-red-600 text-white rounded hover:bg-red-500 hover:scale-105 transition-all duration-200 cursor-pointer"
           >
             Link Last.fm
           </button>
