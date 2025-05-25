@@ -57,7 +57,7 @@ function Header() {
         {isLoggedIn ? (
           <button 
             onClick={handleLogout}
-            className="px-3 sm:px-4 py-1.5 sm:py-2 outline-1 outline-red-600 bg-[#3a3a3a] text-white rounded hover:bg-[#3a3a3a] text-sm sm:text-base cursor-pointer"
+            className="px-3 sm:px-4 py-1.5 sm:py-2 outline-1 outline-red-600 bg-[#3a3a3a] text-white rounded hover:bg-[#3a3a3a] text-sm sm:text-base cursor-pointer hover:scale-105 transition-all duration-200"
           >
             Unlink
           </button>
